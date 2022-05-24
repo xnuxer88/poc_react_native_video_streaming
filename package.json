@@ -1,0 +1,48 @@
+{
+  "name": "VideoStreamingApp2",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "start": "react-native start",
+    "test": "jest",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@react-native-community/slider": "^4.2.1",
+    "@svanboxel/visibility-sensor-react-native": "^1.0.2",
+    "react": "17.0.2",
+    "react-native": "0.67.3",
+    "react-native-autoheight-webview": "^1.6.1",
+    "react-native-gesture-handler": "^2.3.2",
+    "react-native-media-controls": "^2.3.0",
+    "react-native-orientation-locker": "^1.4.0",
+    "react-native-progress": "^5.0.0",
+    "react-native-safe-area-context": "^4.2.1",
+    "react-native-slider": "^0.11.0",
+    "react-native-svg": "^12.3.0",
+    "react-native-vector-icons": "^9.1.0",
+    "react-native-video": "^5.2.0",
+    "react-native-video-cache": "^2.0.5",
+    "react-native-video-ui-controls": "0.0.6",
+    "react-native-webview": "^11.17.2",
+    "react-navigation": "^4.4.4",
+    "react-navigation-stack": "^2.10.4",
+    "react-visibility-sensor": "^5.1.1"
+  },
+  "devDependencies": {
+    "@babel/core": "7.17.7",
+    "@babel/runtime": "7.17.7",
+    "@react-native-community/eslint-config": "2.0.0",
+    "babel-jest": "26.6.3",
+    "eslint": "7.14.0",
+    "jest": "26.6.3",
+    "metro-react-native-babel-preset": "0.66.2",
+    "react-test-renderer": "17.0.2",
+    "reactotron-react-native": "^5.0.1"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}
