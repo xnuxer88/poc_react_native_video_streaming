@@ -28,6 +28,8 @@ import React from "react";
 import {Button, View, Text, StyleSheet, StatusBar, Dimensions, Touchable } from "react-native";  
 import { createAppContainer } from "react-navigation";  
 import { createStackNavigator } from "react-navigation-stack";
+
+import Video from 'react-native-video';
 import VideoPlayer2 from './Components/VideoPlayer2';
 import VideoPlayer3 from './Components/VideoPlayer3';
 import { WebView } from 'react-native-webview';
@@ -40,7 +42,8 @@ import { TouchableHighlight } from "react-native";
 const video = require('./Sample.mp4');
 const videoStreamNeedRangeHeader = "http://10.0.2.2:3003/video";
 const videoStreamNoNeedRangeHeader = "http://10.0.2.2:3003/video2"; // IF SEEK, VIDEO SENDING RANGE HEADER, AND SERVER GIVE ONLY CHUNK. VIDEO WILL STOP IN THE MIDDLE
-const videoDirectLink = "http://10.0.2.2:3003/videoDirectLink"; // USE THIS
+const videoDirectLink = "http://192.168.1.97:3003/videoDirectLinkTest"; // USE THIS
+//const videoDirectLink = "http://192.168.1.97:3003/videoDirectLinkS3"; // USE THIS
 const videoDirectLinkNotFound = "http://google.com/notavideo";
 const videoHLS = "http://10.0.2.2:3003/videoHLS/Sample.m3u8";
 const imageUrl = "images/";
@@ -61,7 +64,7 @@ class HomeScreen extends React.Component {
     isFullScreen: false,
     isBottomSheetVisible: false,
   }
-
+  
   onVideoFullScreen(isFullScreen) {
     // console.log('onVideoFullScreen called');
     this.setState({
@@ -83,7 +86,7 @@ class HomeScreen extends React.Component {
         }, 500);
         true; // note: this is required, or you'll sometimes get silent failures
       `;
-
+      console.log("NewPlayer");
       return (
         // <View>
         //   <View
@@ -130,13 +133,22 @@ class HomeScreen extends React.Component {
           <View 
             style={this.state.isFullScreen === true ? styles.videoContainerFullScreen : styles.videoContainer}
             >
+            {/* <Video source={{uri: videoDirectLink}}   // Can be a URL or a local file.
+              ref={(ref) => {
+                this.player = ref
+              }}                                      // Store reference
+              paused={false}
+              onBuffer={this.onBuffer}                // Callback when remote video is buffering
+              onError={this.videoError}               // Callback when video cannot be loaded
+              style={styles.backgroundVideo} /> */}
+
             <VideoPlayer3
               source={{ uri: videoDirectLink }}
               navigator={this.AppNavigator}
               tapAnywhereToPause={false}
               toggleResizeModeOnFullscreen={false}
               isFullScreen={false}
-              thumbnail={imageUrl}
+              //thumbnail={imageUrl}
               disableBack={true}
               disableVolume={true}
               disableSeekbar={false}
@@ -190,7 +202,14 @@ const styles = StyleSheet.create({
     left: 0,
     width: screen.height,
     zIndex: 1,
-  },
+  }//,
+  //backgroundVideo: {
+  //  position: 'absolute',
+  //  top: 0,
+  //  left: 0,
+  //  bottom: 0,
+  //  right: 0,
+  //},
 });
 
 // export default createAppContainer(AppNavigator);  

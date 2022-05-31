@@ -79,7 +79,8 @@ export default class VideoPlayer extends Component {
             source: this.props.source,
             opacity: 0,
             rangeHeader: 'bytes=0-',
-            videoSize: 28253301,
+            //videoSize: 28253301,
+            useNativeControls: true,
             controlHiddenAnimationFinished: false,
         };
 
@@ -253,7 +254,7 @@ export default class VideoPlayer extends Component {
      * @param {object} data The video meta data
      */
     _onProgress(data = {}) {
-        // console.log(data.playableDuration + "|" + data.currentTime);
+        console.log(data.playableDuration + "|" + data.currentTime);
         // console.log(this.state.progress + "|" + data.progress)
         let state = this.state;
         // console.log(`onprogress: paused=${state.paused}`);
@@ -266,13 +267,13 @@ export default class VideoPlayer extends Component {
             state.currentTime = data.currentTime;
 
             //CALCULATE RANGE HEADER
-            // console.log(`currentTime = ${data.currentTime}, videoSize = ${state.videoSize}, playableDuration = ${data.playableDuration}`);
-            // if (data.playableDuration != 0){
-            //     range = Math.floor(data.currentTime * state.videoSize / data.playableDuration);
-            //     rangeHeader = `bytes=${range}-`;
-            //     // console.log(`rangeHeader = ${rangeHeader}`);
-            //     // state.rangeHeader = rangeHeader;
-            // }
+            //console.log(`currentTime = ${data.currentTime}, videoSize = ${state.videoSize}, playableDuration = ${data.playableDuration}`);
+            //if (data.playableDuration != 0){
+            //    range = Math.floor(data.currentTime * state.videoSize / data.playableDuration);
+            //    rangeHeader = `bytes=${range}-`;
+            //    console.log(`rangeHeader = ${rangeHeader}`);
+            //    state.rangeHeader = rangeHeader;
+            //}
 
             if (!state.seeking) {
                 const position = this.calculateSeekerPosition();
@@ -1530,7 +1531,7 @@ export default class VideoPlayer extends Component {
     }
 
     async playVideo() {
-        console.log('playVideo');
+        console.log('playVideo-new2');
         this.setState({ player: false, paused: false });
         typeof this.events.onPlay === 'function' && this.events.onPlay();
     }
@@ -1665,15 +1666,15 @@ export default class VideoPlayer extends Component {
                         style={[VideoPlayerstyles.player.video, this.styles.videoStyle]}
                         source={{
                             uri: this.state.source.uri,
-                            type: 'mp4',
-                            // headers: {
-                            //     'range': this.state.rangeHeader
-                            // }
+                            type: 'mp4'//,
+                            //headers: {
+                            //    'range': this.state.rangeHeader
+                            //}
                         }}
                         // source={{uri: convertToProxyURL(this.state.source.uri)}}
                         onBuffer={this.onBuffer}
                         onLoadStart={this.onLoadStart}
-                        seek={0}
+                        //seek={0}
                     />
                     {/* WIP
                     <ActivityIndicator

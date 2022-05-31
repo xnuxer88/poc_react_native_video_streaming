@@ -29,6 +29,7 @@
     "react-native-webview": "^11.17.2",
     "react-navigation": "^4.4.4",
     "react-navigation-stack": "^2.10.4",
+    "react-player": "^2.10.1",
     "react-visibility-sensor": "^5.1.1"
   },
   "devDependencies": {
